@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.text.DecimalFormat;
 
 @RestController
-@RequestMapping("/credit")
+@RequestMapping("/credit/score")
 @CrossOrigin
 public class WebsiteController {
     private final RequestProcessing requestProcessing;
@@ -18,52 +18,51 @@ public class WebsiteController {
         this.requestProcessing = requestProcessing;
     }
 
-    @RequestMapping(value = "/score/lr", method = RequestMethod.POST)
-    public String processViaLogisticRegression(@RequestBody FormData formData) {
+    @RequestMapping(value = "/lr", method = RequestMethod.POST)
+    public double processViaLogisticRegression(@RequestBody FormData formData) {
         var res = requestProcessing.processOnlineRequest(formData, "lr");
-
-
         double r = Double.parseDouble(res);
-        DecimalFormat df = new DecimalFormat("0.00%");
-        String percentage = df.format(r);
-
-        return percentage;
+//        DecimalFormat df = new DecimalFormat("0.00%");
+//        String percentage = df.format(r);
+        r = r * 100;
+        return r;
     }
 
-    @RequestMapping(value = "/score/dt", method = RequestMethod.POST)
-    public String processViaDecisionTree(@RequestBody FormData formData) {
+    @RequestMapping(value = "/dt", method = RequestMethod.POST)
+    public double processViaDecisionTree(@RequestBody FormData formData) {
         var res = requestProcessing.processOnlineRequest(formData, "dt");
 
         double r = Double.parseDouble(res);
-        DecimalFormat df = new DecimalFormat("0.00%");
-        String percentage = df.format(r);
-
-        return percentage;
+//        DecimalFormat df = new DecimalFormat("0.00%");
+//        String percentage = df.format(r);
+        r = r * 100;
+        return r;
     }
 
-    @RequestMapping(value = "/score/rf", method = RequestMethod.POST)
-    public String processViaRandomForest(@RequestBody FormData formData) {
+    @RequestMapping(value = "/rf", method = RequestMethod.POST)
+    public double processViaRandomForest(@RequestBody FormData formData) {
         var res = requestProcessing.processOnlineRequest(formData, "rf");
 
         double r = Double.parseDouble(res);
-        DecimalFormat df = new DecimalFormat("0.00%");
-        String percentage = df.format(r);
-
-        return percentage;
+//        DecimalFormat df = new DecimalFormat("0.00%");
+//        String percentage = df.format(r);
+        r = r * 100;
+        return r;
     }
 
 
-    @RequestMapping(value = "/score/ann", method = RequestMethod.POST)
-    public String processViaAnn(@RequestBody FormData formData) {
+    @RequestMapping(value = "/ann", method = RequestMethod.POST)
+    public double processViaAnn(@RequestBody FormData formData) {
         var res = requestProcessing.processOnlineRequest(formData, "ann");
-
-
         double r = Double.parseDouble(res);
-        DecimalFormat df = new DecimalFormat("0.00%");
-        String percentage = df.format(r);
-
-        return percentage;
+//        DecimalFormat df = new DecimalFormat("0.00%");
+//        String percentage = df.format(r);
+        r = r * 100;
+        return r;
     }
 
-
+    @RequestMapping(value = "/test", method = RequestMethod.POST)
+    public String testEndPoint() {
+        return "test";
+    }
 }

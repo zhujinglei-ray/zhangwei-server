@@ -72,11 +72,17 @@ public class RequestProcessing {
             params.put("child_num_1", "1");
             // child num 怎么算的 要再看一下
             params.put("child_num_2More", "0");
+            return;
         } else if (data.getChildNum() > 1) {
             params.put("child_num_1", "0");
             // child num 怎么算的 要再看一下
             params.put("child_num_2More", "1");
+
+            return;
         }
+
+        params.put("child_num_1", "0");
+        params.put("child_num_2More", "0");
     }
 
     //年龄分组 // 根据
@@ -278,6 +284,9 @@ public class RequestProcessing {
             params.put("famsizegp_1", "0");
             params.put("famsizegp_3more", "1");
         }
+
+        params.put("famsizegp_1", "0");
+        params.put("famsizegp_3more", "0");
 
     }
 
