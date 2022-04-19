@@ -12,15 +12,17 @@ import java.util.Set;
 @Service
 public class RequestProcessing {
     private final RequestPythonRestService pythonRestService;
-
+    private final StorageService storageService;
     @Autowired
-    public RequestProcessing(RequestPythonRestService pythonRestService) {
+    public RequestProcessing(RequestPythonRestService pythonRestService, StorageService storageService) {
         this.pythonRestService = pythonRestService;
+        this.storageService = storageService;
     }
 
     // 以后模型变量 改变以后 需要 把这里的 mapping 改了
     // 这里数据清理的参数 应该再多研究一下，现在这里只是作为 一个简单的预处理，作为展示使用
     public String processOnlineRequest(FormData formData, String type) {
+        storageService.storeData(formData);
         var params = convertToParamsMap(formData);
         return pythonRestService.sentToPython(params, type);
     }
