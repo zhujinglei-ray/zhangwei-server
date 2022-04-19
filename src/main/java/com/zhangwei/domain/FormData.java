@@ -3,8 +3,7 @@ package com.zhangwei.domain;
 import java.util.Objects;
 
 public class FormData {
-    //female -> 0 male->1
-    private boolean gender;
+    private int gender;
     private boolean ownRealEstate;
     private boolean ownCar;
     private boolean ownWorkPhone;
@@ -20,29 +19,14 @@ public class FormData {
     private String educationStatus;
     private String marriageStatus;
 
-    public FormData(boolean gender, boolean ownRealEstate, boolean ownCar, boolean ownWorkPhone, int childNum, int age,
-                    int worksYears, int familySize, int annualIncome, String occupationType, String houseType,
-                    String educationStatus, String marriageStatus) {
-        this.gender = gender;
-        this.ownRealEstate = ownRealEstate;
-        this.ownCar = ownCar;
-        this.ownWorkPhone = ownWorkPhone;
-        this.childNum = childNum;
-        this.age = age;
-        this.worksYears = worksYears;
-        this.familySize = familySize;
-        this.annualIncome = annualIncome;
-        this.occupationType = occupationType;
-        this.houseType = houseType;
-        this.educationStatus = educationStatus;
-        this.marriageStatus = marriageStatus;
+    public FormData() {
     }
 
-    public boolean isGender() {
+    public int getGender() {
         return gender;
     }
 
-    public void setGender(boolean gender) {
+    public void setGender(int gender) {
         this.gender = gender;
     }
 
@@ -68,6 +52,14 @@ public class FormData {
 
     public void setOwnWorkPhone(boolean ownWorkPhone) {
         this.ownWorkPhone = ownWorkPhone;
+    }
+
+    public int getAnnualIncome() {
+        return annualIncome;
+    }
+
+    public void setAnnualIncome(int annualIncome) {
+        this.annualIncome = annualIncome;
     }
 
     public int getChildNum() {
@@ -100,14 +92,6 @@ public class FormData {
 
     public void setFamilySize(int familySize) {
         this.familySize = familySize;
-    }
-
-    public int getAnnualIncome() {
-        return annualIncome;
-    }
-
-    public void setAnnualIncome(int annualIncome) {
-        this.annualIncome = annualIncome;
     }
 
     public String getOccupationType() {
@@ -147,12 +131,12 @@ public class FormData {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         FormData formData = (FormData) o;
-        return gender == formData.gender && ownRealEstate == formData.ownRealEstate && ownCar == formData.ownCar && ownWorkPhone == formData.ownWorkPhone && childNum == formData.childNum && age == formData.age && worksYears == formData.worksYears && familySize == formData.familySize && annualIncome == formData.annualIncome && Objects.equals(occupationType, formData.occupationType) && Objects.equals(houseType, formData.houseType) && Objects.equals(educationStatus, formData.educationStatus) && Objects.equals(marriageStatus, formData.marriageStatus);
+        return gender == formData.gender && ownRealEstate == formData.ownRealEstate && ownCar == formData.ownCar && ownWorkPhone == formData.ownWorkPhone && annualIncome == formData.annualIncome && childNum == formData.childNum && age == formData.age && worksYears == formData.worksYears && familySize == formData.familySize && Objects.equals(occupationType, formData.occupationType) && Objects.equals(houseType, formData.houseType) && Objects.equals(educationStatus, formData.educationStatus) && Objects.equals(marriageStatus, formData.marriageStatus);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(gender, ownRealEstate, ownCar, ownWorkPhone, childNum, age, worksYears, familySize, annualIncome, occupationType, houseType, educationStatus, marriageStatus);
+        return Objects.hash(gender, ownRealEstate, ownCar, ownWorkPhone, annualIncome, childNum, age, worksYears, familySize, occupationType, houseType, educationStatus, marriageStatus);
     }
 
     @Override
@@ -162,11 +146,11 @@ public class FormData {
                 ", ownRealEstate=" + ownRealEstate +
                 ", ownCar=" + ownCar +
                 ", ownWorkPhone=" + ownWorkPhone +
+                ", annualIncome=" + annualIncome +
                 ", childNum=" + childNum +
                 ", age=" + age +
                 ", worksYears=" + worksYears +
                 ", familySize=" + familySize +
-                ", annualIncome=" + annualIncome +
                 ", occupationType='" + occupationType + '\'' +
                 ", houseType='" + houseType + '\'' +
                 ", educationStatus='" + educationStatus + '\'' +
